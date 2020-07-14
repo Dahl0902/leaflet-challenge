@@ -120,7 +120,7 @@ function createMap(earthquakes) {
 
   legend.onAdd = function(map) {
 
-    var div = L.DomUtil.create('div','info legend'),
+    var div = L.DomUtil.create('div','legend'),
         magnitudes = [0,1,2,3,4,5],
         labels = [];
 
@@ -128,8 +128,9 @@ function createMap(earthquakes) {
     // loop through our density intervals and generate a label for each interval
     for (var i=0; i < magnitudes.length; i++){
       div.innerHTML +=
-        '<i style="background:' + getColor(magnitudes[i] + 1) + '"></i> ' +
-        magnitudes[i] + (magnitudes[i+1]?'&ndash;' + magnitudes[i+1] +'<br>': '+');
+      labels.push(
+        '<i class="circle" style="background:' + getColor(magnitudes[i] + 1) + '"></i> ' +
+        magnitudes[i] + (magnitudes[i+1]?'&ndash;' + magnitudes[i+1] +'<br>': '+'));
       }
       return div;
   };
